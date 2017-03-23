@@ -1,15 +1,25 @@
 {
-  "name": "qbot",
+  "name": "canvas-coordinates",
   "version": "0.1.0",
   "description": "HTML5 Canvas Coordinate Converters",
-  "main": "src/coordinateConverters.js",
+  "author": {
+    "name": "Dennis Dunn",
+    "email": "ansofive@gmail.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dennisdunn/canvas-coordinates.git"
+  },
+  "main": "coordinateTransforms.js",
+  "files": [
+    "coordinateTransforms.js"
+  ],
   "scripts": {
     "test": "mocha --compilers js:babel-core/register tests"
   },
-  "author": "Dennis Dunn <ansofive@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
