@@ -23,12 +23,6 @@ const data = {
         II: { x: 50, y: 50 },
         III: { x: 50, y: 150 },
         IV: { x: 150, y: 150 }
-    },
-    'canvasPolar': {
-        I: { r: radius, theta: 7 / 4 * Math.PI },
-        II: { r: radius, theta: 5 / 4 * Math.PI },
-        III: { r: radius, theta: 3 / 4 * Math.PI },
-        IV: { r: radius, theta: 1 / 4 * Math.PI }
     }
 }
 
@@ -39,9 +33,9 @@ describe('coordinate transform test of', () => {
         ['I', 'II', 'III', 'IV'].forEach(quadrant => {
             let msg = 'should convert quadrant ' + quadrant + ' coordinates to polar coordinates'
             it(msg, () => {
-                let r = sut.cartesianToPolar(data.cartesian[quadrant])
-                r.r.should.be.closeTo(data.polar[quadrant].r, 1e-4)
-                r.theta.should.be.closeTo(data.polar[quadrant].theta, 1e-4)
+                let point = sut.cartesianToPolar(data.cartesian[quadrant])
+                point.r.should.be.closeTo(data.polar[quadrant].r, 1e-4)
+                point.theta.should.be.closeTo(data.polar[quadrant].theta, 1e-4)
             })
         })
     })
@@ -50,9 +44,9 @@ describe('coordinate transform test of', () => {
         ['I', 'II', 'III', 'IV'].forEach(quadrant => {
             let msg = 'should convert polar coordinates to quadrant ' + quadrant + ' coordinates'
             it(msg, () => {
-                let r = sut.polarToCartesian(data.polar[quadrant])
-                r.x.should.be.closeTo(data.cartesian[quadrant].x, 1e-4)
-                r.y.should.be.closeTo(data.cartesian[quadrant].y, 1e-4)
+                let point = sut.polarToCartesian(data.polar[quadrant])
+                point.x.should.be.closeTo(data.cartesian[quadrant].x, 1e-4)
+                point.y.should.be.closeTo(data.cartesian[quadrant].y, 1e-4)
             })
         })
     })
@@ -61,8 +55,8 @@ describe('coordinate transform test of', () => {
         ['I', 'II', 'III', 'IV'].forEach(quadrant => {
             let msg = 'should convert quadrant ' + quadrant + ' coordinates to canvas coordinates'
             it(msg, () => {
-                let r = sut.cartesianToCanvas(data.cartesian[quadrant])
-                r.should.deep.equal(data.canvas[quadrant])
+                let point = sut.cartesianToCanvas(data.cartesian[quadrant])
+                point.should.deep.equal(data.canvas[quadrant])
             })
         })
     })
@@ -71,31 +65,31 @@ describe('coordinate transform test of', () => {
         ['I', 'II', 'III', 'IV'].forEach(quadrant => {
             let msg = 'should convert canvas coordinates to quadrant ' + quadrant + ' coordinates'
             it(msg, () => {
-                let r = sut.canvasToCartesian(data.canvas[quadrant])
-                r.should.deep.equal(data.cartesian[quadrant])
+                let point = sut.canvasToCartesian(data.canvas[quadrant])
+                point.should.deep.equal(data.cartesian[quadrant])
             })
         })
     })
 
-    describe('polar to canvas-referenced polar conversions', () => {
+    describe('polar to canvas conversions', () => {
         ['I', 'II', 'III', 'IV'].forEach(quadrant => {
-            let msg = 'should convert polar coordinates to canvas-referenced polar coordinates'
+            let msg = 'should convert polar coordinates to canvas coordinates'
             it(msg, () => {
-                let r = sut.polarToCanvaspolar(data.polar[quadrant])
-                r.r.should.be.closeTo(data.canvasPolar[quadrant].r, 1e-4)
-                r.theta.should.be.closeTo(data.canvasPolar[quadrant].theta, 1e-4)
+                let point = sut.polarToCanvas(data.polar[quadrant])
+                point.x.should.be.closeTo(data.canvas[quadrant].x, 1e-4)
+                point.y.should.be.closeTo(data.canvas[quadrant].y, 1e-4)
             })
         })
     })
 
-    describe('canvas-referenced polar to polar conversions', () => {
+    describe('canvas to polar conversions', () => {
         ['I', 'II', 'III', 'IV'].forEach(quadrant => {
-            let msg = 'should convert canvas-referenced polar coordinates to polar coordinates'
+            let msg = 'should convert canvas coordinates to polar coordinates'
             it(msg, () => {
-                let r = sut.polarToCanvaspolar(data.canvasPolar[quadrant])
-                r.r.should.be.closeTo(data.polar[quadrant].r, 1e-4)
-                r.theta.should.be.closeTo(data.polar[quadrant].theta, 1e-4)
-            })
+                let point = sut.canvasToPolar(data.canvas[quadrant])
+                point.r.should.be.closeTo(data.polar[quadrant].r, 1e-4)
+                point.theta.should.be.closeTo(data.polar[quadrant].theta, 1e-4)
+          })
         })
     })
 })

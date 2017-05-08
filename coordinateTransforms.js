@@ -20,14 +20,16 @@ export default class CoordinateTransforms {
         return CoordinateTransforms.polarToCartesian(point)
     }
 
-    polarToCanvaspolar(point) {
-        return CoordinateTransforms.polarToCanvas(point)
+    polarToCanvas(point) {
+        var p2 = CoordinateTransforms.polarToCartesian(point)
+        return CoordinateTransforms.cartesianToCanvas(p2, this.offset)
     }
 
-    canvaspolarToPolar(point) {
-        return CoordinateTransforms.polarToCanvas(point)
+    canvasToPolar(point) {
+        var p2 = CoordinateTransforms.canvasToCartesian(point, this.offset)
+        return CoordinateTransforms.cartesianToPolar(p2)
     }
-
+    
     static canvasToCartesian(point, offset) {
         return {
             x: point.x - offset.x,
@@ -55,13 +57,6 @@ export default class CoordinateTransforms {
         return {
             x: point.r * Math.cos(point.theta),
             y: point.r * Math.sin(point.theta)
-        }
-    }
-
-    static polarToCanvas(point) {
-        return {
-            r: point.r,
-            theta: 2 * Math.PI - point.theta
         }
     }
 
