@@ -81,15 +81,6 @@ var libCoord = function () {
                 y: point.r * Math.sin(point.theta)
             };
         }
-    }, {
-        key: "eventToCanvas",
-        value: function eventToCanvas(e) {
-            var rect = document.getElementById(e.target.id).getBoundingClientRect();
-            return {
-                x: e.clientX - rect.left,
-                y: e.clientY - rect.top
-            };
-        }
     }]);
 
     return libCoord;

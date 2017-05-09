@@ -1,5 +1,4 @@
-
-import libCoord from '../source/index'
+import libCoord from '../dist/index'
 import { assert, should } from 'chai'
 should()
 
