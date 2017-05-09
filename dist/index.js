@@ -1,47 +1,51 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-module.exports = function () {
-    function Coords(offset) {
-        _classCallCheck(this, Coords);
+var libCoord = function () {
+    function libCoord(offset) {
+        _classCallCheck(this, libCoord);
 
         this.offset = offset;
     }
 
-    _createClass(Coords, [{
+    _createClass(libCoord, [{
         key: "canvasToCartesian",
         value: function canvasToCartesian(point) {
-            return Coords.canvasToCartesian(point, this.offset);
+            return libCoord.canvasToCartesian(point, this.offset);
         }
     }, {
         key: "cartesianToCanvas",
         value: function cartesianToCanvas(point) {
-            return Coords.cartesianToCanvas(point, this.offset);
+            return libCoord.cartesianToCanvas(point, this.offset);
         }
     }, {
         key: "cartesianToPolar",
         value: function cartesianToPolar(point) {
-            return Coords.cartesianToPolar(point);
+            return libCoord.cartesianToPolar(point);
         }
     }, {
         key: "polarToCartesian",
         value: function polarToCartesian(point) {
-            return Coords.polarToCartesian(point);
+            return libCoord.polarToCartesian(point);
         }
     }, {
         key: "polarToCanvas",
         value: function polarToCanvas(point) {
-            var p2 = Coords.polarToCartesian(point);
-            return Coords.cartesianToCanvas(p2, this.offset);
+            var p2 = libCoord.polarToCartesian(point);
+            return libCoord.cartesianToCanvas(p2, this.offset);
         }
     }, {
         key: "canvasToPolar",
         value: function canvasToPolar(point) {
-            var p2 = Coords.canvasToCartesian(point, this.offset);
-            return Coords.cartesianToPolar(p2);
+            var p2 = libCoord.canvasToCartesian(point, this.offset);
+            return libCoord.cartesianToPolar(p2);
         }
     }], [{
         key: "canvasToCartesian",
@@ -88,5 +92,10 @@ module.exports = function () {
         }
     }]);
 
-    return Coords;
+    return libCoord;
 }();
+
+exports.default = libCoord;
+
+
+module.exports = libCoord;

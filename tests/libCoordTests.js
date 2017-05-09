@@ -1,5 +1,5 @@
 
-import CoordinateTransforms from '../coordinateTransforms'
+import libCoord from '../source/index'
 import { assert, should } from 'chai'
 should()
 
@@ -26,7 +26,7 @@ const data = {
     }
 }
 
-const sut = new CoordinateTransforms(origin)
+const sut = new libCoord(origin)
 
 describe('coordinate transform test of', () => {
     describe('cartesian to polar conversions', () => {

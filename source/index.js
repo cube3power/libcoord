@@ -1,33 +1,33 @@
 
-module.exports = class Coords {
+export default class libCoord {
     constructor(offset) {
         this.offset = offset
     }
 
     canvasToCartesian(point) {
-        return Coords.canvasToCartesian(point, this.offset)
+        return libCoord.canvasToCartesian(point, this.offset)
     }
 
     cartesianToCanvas(point) {
-        return Coords.cartesianToCanvas(point, this.offset)
+        return libCoord.cartesianToCanvas(point, this.offset)
     }
 
     cartesianToPolar(point) {
-        return Coords.cartesianToPolar(point)
+        return libCoord.cartesianToPolar(point)
     }
 
     polarToCartesian(point) {
-        return Coords.polarToCartesian(point)
+        return libCoord.polarToCartesian(point)
     }
 
     polarToCanvas(point) {
-        var p2 = Coords.polarToCartesian(point)
-        return Coords.cartesianToCanvas(p2, this.offset)
+        var p2 = libCoord.polarToCartesian(point)
+        return libCoord.cartesianToCanvas(p2, this.offset)
     }
 
     canvasToPolar(point) {
-        var p2 = Coords.canvasToCartesian(point, this.offset)
-        return Coords.cartesianToPolar(p2)
+        var p2 = libCoord.canvasToCartesian(point, this.offset)
+        return libCoord.cartesianToPolar(p2)
     }
     
     static canvasToCartesian(point, offset) {
@@ -59,12 +59,6 @@ module.exports = class Coords {
             y: point.r * Math.sin(point.theta)
         }
     }
-
-    static eventToCanvas(e) {
-        var rect = document.getElementById(e.target.id).getBoundingClientRect();
-        return {
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top
-        };
-    }
 }
+
+module.exports = libCoord
