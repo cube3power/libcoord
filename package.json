@@ -1,5 +1,5 @@
 {
-  "name": "canvas-coordinates",
+  "name": "libcoord",
   "version": "0.1.0",
   "description": "HTML5 DOM Coordinate Converters",
   "author": {
@@ -10,7 +10,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/dennisdunn/domcoord.git"
+    "url": "https://github.com/dennisdunn/libcoord.git"
   },
   "main": "./dist/index.js",
   "files": [
@@ -18,7 +18,8 @@
   ],
   "scripts": {
     "test": "mocha --compilers js:babel-core/register tests",
-    "build": "babel source --presets babel-preset-es2015 --out-dir dist"
+    "build": "babel source --presets babel-preset-es2015 --out-dir dist",
+    "prepublish": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {
