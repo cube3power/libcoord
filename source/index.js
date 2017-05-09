@@ -1,33 +1,33 @@
 
-export default class CoordinateTransforms {
+module.exports = class Coords {
     constructor(offset) {
         this.offset = offset
     }
 
     canvasToCartesian(point) {
-        return CoordinateTransforms.canvasToCartesian(point, this.offset)
+        return Coords.canvasToCartesian(point, this.offset)
     }
 
     cartesianToCanvas(point) {
-        return CoordinateTransforms.cartesianToCanvas(point, this.offset)
+        return Coords.cartesianToCanvas(point, this.offset)
     }
 
     cartesianToPolar(point) {
-        return CoordinateTransforms.cartesianToPolar(point)
+        return Coords.cartesianToPolar(point)
     }
 
     polarToCartesian(point) {
-        return CoordinateTransforms.polarToCartesian(point)
+        return Coords.polarToCartesian(point)
     }
 
     polarToCanvas(point) {
-        var p2 = CoordinateTransforms.polarToCartesian(point)
-        return CoordinateTransforms.cartesianToCanvas(p2, this.offset)
+        var p2 = Coords.polarToCartesian(point)
+        return Coords.cartesianToCanvas(p2, this.offset)
     }
 
     canvasToPolar(point) {
-        var p2 = CoordinateTransforms.canvasToCartesian(point, this.offset)
-        return CoordinateTransforms.cartesianToPolar(p2)
+        var p2 = Coords.canvasToCartesian(point, this.offset)
+        return Coords.cartesianToPolar(p2)
     }
     
     static canvasToCartesian(point, offset) {
