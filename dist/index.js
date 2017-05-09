@@ -81,6 +81,18 @@ var libCoord = function () {
                 y: point.r * Math.sin(point.theta)
             };
         }
+    }, {
+        key: "degreeToRadian",
+        value: function degreeToRadian(point) {
+            point.theta *= 57.2958;
+            return point;
+        }
+    }, {
+        key: "radianToDegree",
+        value: function radianToDegree(point) {
+            point.theta /= 57.2958;
+            return point;
+        }
     }]);
 
     return libCoord;

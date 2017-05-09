@@ -18,8 +18,7 @@
   ],
   "scripts": {
     "test": "mocha --compilers js:babel-core/register tests",
-    "build": "babel source --presets babel-preset-es2015 --out-dir dist",
-    "prepublish": "npm run build"
+    "make": "babel source --presets babel-preset-es2015 --out-dir dist"
   },
   "dependencies": {},
   "devDependencies": {

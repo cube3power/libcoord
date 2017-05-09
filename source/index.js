@@ -59,6 +59,16 @@ export default class libCoord {
             y: point.r * Math.sin(point.theta)
         }
     }
+
+    static degreeToRadian(point){
+        point.theta *= 57.2958
+        return point
+    }
+
+    static radianToDegree(point){
+        point.theta /= 57.2958
+        return point
+    }
 }
 
 module.exports = libCoord
